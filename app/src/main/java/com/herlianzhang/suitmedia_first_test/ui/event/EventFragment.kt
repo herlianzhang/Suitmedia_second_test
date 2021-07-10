@@ -68,7 +68,7 @@ class EventFragment : Fragment(), EventAdapter.OnClickListener, OnMapReadyCallba
 
     private fun initListener() {
         binding.ivBack.setOnClickListener {
-            Timber.d("Back")
+            findNavController().popBackStack()
         }
 
         binding.ivNewMediaArticle.setOnClickListener {
