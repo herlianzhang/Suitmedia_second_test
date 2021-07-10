@@ -1,8 +1,10 @@
 package com.herlianzhang.suitmedia_first_test.ui.guest
 
+import android.app.Application
+import android.widget.Toast
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.herlianzhang.suitmedia_first_test.api.Result
 import com.herlianzhang.suitmedia_first_test.repository.GuestRepository
@@ -16,9 +18,11 @@ import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
+import kotlin.math.sqrt
 
 @HiltViewModel
-class GuestViewModel @Inject constructor(private val rep: GuestRepository) : ViewModel() {
+class GuestViewModel @Inject constructor(app: Application, private val rep: GuestRepository) :
+    AndroidViewModel(app) {
 
     private var job: Job? = null
 
@@ -70,6 +74,9 @@ class GuestViewModel @Inject constructor(private val rep: GuestRepository) : Vie
                 it.time = format.parse(guest.birthdate.toString()) ?: it.time
             }
             val date = calendar.get(Calendar.DATE)
+            val month = calendar.get(Calendar.MONTH) + 1
+            Toast.makeText(getApplication(), "month $month isPrime = ${isPrime(month)}", Toast.LENGTH_SHORT)
+                .show()
             val message = when {
                 date % 2 == 0 && date % 3 == 0 -> "IOS"
                 date % 2 == 0 -> "blackberry"
@@ -80,5 +87,16 @@ class GuestViewModel @Inject constructor(private val rep: GuestRepository) : Vie
         } catch (e: Exception) {
             Timber.e("Exception cause $e")
         }
+    }
+
+    private fun isPrime(month: Int): Boolean {
+        if (month <= 1)
+            return false
+
+        for (i in 2..sqrt(month * 1f).toInt())
+            if (month % i == 0)
+                return false
+
+        return true
     }
 }
