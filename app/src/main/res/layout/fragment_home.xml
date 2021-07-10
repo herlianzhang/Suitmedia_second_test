@@ -4,10 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_validation"
     tools:context=".ui.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/tv_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Sertakan gambar profil Anda\nuntuk melengkapi profil"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@id/iv_add_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_welcome" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_add_photo"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:padding="2dp"
+        android:layout_marginVertical="48dp"
+        android:src="@drawable/btn_add_photo_"
+        app:layout_constraintBottom_toTopOf="@id/et_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_desc"
+        app:shapeAppearance="@style/circleImageView"
+        app:strokeColor="@color/white"
+        app:strokeWidth="2dp" />
+
     <EditText
+        android:background="@drawable/text_field_bg"
         android:id="@+id/et_main"
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="18sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -16,14 +65,20 @@
         app:layout_constraintBottom_toTopOf="@id/button_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toBottomOf="@id/iv_add_photo" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
         android:id="@+id/button_main"
         android:layout_width="0dp"
+        android:layout_marginHorizontal="32dp"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="8dp"
+        app:strokeColor="@color/white"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
+        app:strokeWidth="2dp"
         android:layout_marginTop="16dp"
         android:text="@string/next"
         android:textAllCaps="false"
