@@ -5,6 +5,6 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface ApiService {
-    @GET("")
-    suspend fun getGuests(): Response<Guest>
+    @GET("596dec7f0f000023032b8017")
+    suspend fun getGuests(): Response<List<Guest>>
 }

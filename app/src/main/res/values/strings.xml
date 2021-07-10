@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Suitmedia_first_test</string>
+    <string name="next">next</string>
+    <string name="input_name">masukkan nama...</string>
+    <string name="name_separator">:</string>
+    <string name="name">Nama</string>
+    <string name="select_event">pilih event</string>
+    <string name="select_guest">pilih guest</string>
+    <string name="event_name">%s event</string>
+    <string name="guest_name">%s guest</string>
+    <string name="event">EVENT</string>
+    <string name="guest">GUEST</string>
+    <string name="error_try_again">Error Try again?</string>
 </resources>

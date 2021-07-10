@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.herlianzhang.suitmedia_first_test.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_eventOrGuestFragment"
+            app:destination="@id/eventOrGuestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventOrGuestFragment"
+        android:name="com.herlianzhang.suitmedia_first_test.ui.event_or_guest.EventOrGuestFragment"
+        android:label="fragment_event_or_guest"
+        tools:layout="@layout/fragment_event_or_guest">
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_eventOrGuestFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_eventOrGuestFragment_to_guestFragment"
+            app:destination="@id/guestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.herlianzhang.suitmedia_first_test.ui.event.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/guestFragment"
+        android:name="com.herlianzhang.suitmedia_first_test.ui.guest.GuestFragment"
+        android:label="fragment_guest"
+        tools:layout="@layout/fragment_guest" />
 </navigation>
