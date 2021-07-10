@@ -47,15 +47,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun isPalindrome(value: String): Boolean {
-        var isPalindrome = true
         val text = value.replace(" ", "").lowercase()
-        for (i in 0 until (text.count() / 2)) {
-            if (text[i] != text[text.count() - 1 - i]) {
-                isPalindrome = false
-                break
-            }
-        }
-        return isPalindrome
+        for (i in 0 until (text.count() / 2))
+            if (text[i] != text[text.count() - 1 - i])
+                return false
+        
+        return true
     }
 
 }
