@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.herlianzhang.suitmedia_first_test.databinding.ItemEventBinding
+import com.herlianzhang.suitmedia_first_test.databinding.ItemEventMapViewBinding
 import com.herlianzhang.suitmedia_first_test.vo.Event
 
-class EventAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<Event, EventAdapter.ViewHolder>(DiffCallback()) {
+class EventMapViewAdapter(private val onClickListener: EventAdapter.OnClickListener) :
+    ListAdapter<Event, EventMapViewAdapter.ViewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder.from(parent)
 
@@ -22,26 +22,18 @@ class EventAdapter(private val onClickListener: OnClickListener) :
         }
     }
 
-    class ViewHolder private constructor(private val binding: ItemEventBinding) :
+    class ViewHolder private constructor(private val binding: ItemEventMapViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Event) {
-            val adapter = EventHashtagAdapter()
-            binding.rvHashtag.adapter = adapter
-
             binding.tvName.text = item.name
-            binding.tvDate.text = item.date
-            binding.tvDesc.text = item.desc
-
-            adapter.submitList(item.tag)
-
             Glide.with(binding.root).load(item.image).into(binding.ivMain)
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ItemEventBinding.inflate(layoutInflater, parent, false)
+                val binding = ItemEventMapViewBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }
@@ -51,9 +43,5 @@ class EventAdapter(private val onClickListener: OnClickListener) :
 
         override fun areItemsTheSame(oldItem: Event, newItem: Event) = oldItem.id == newItem.id
         override fun areContentsTheSame(oldItem: Event, newItem: Event) = oldItem == newItem
-    }
-
-    interface OnClickListener {
-        fun onClick(name: String)
     }
 }

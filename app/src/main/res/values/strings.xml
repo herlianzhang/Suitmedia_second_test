@@ -12,4 +12,5 @@
     <string name="guest">GUEST</string>
     <string name="error_try_again">Error Try again?</string>
     <string name="welcome">Selamat Datang!</string>
+    <string name="hashtag">#%s</string>
 </resources>

@@ -45,6 +45,10 @@ class GuestFragment : Fragment(), GuestAdapter.OnClickListener {
         binding.buttonError.setOnClickListener {
             viewModel.getGuests()
         }
+
+        binding.srlMain.setOnRefreshListener {
+            viewModel.getGuests()
+        }
     }
 
     private fun initObserver() {
@@ -54,6 +58,8 @@ class GuestFragment : Fragment(), GuestAdapter.OnClickListener {
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.pbMain.isVisible = isLoading
+            if (isLoading == false)
+                binding.srlMain.isRefreshing = false
         }
 
         viewModel.isError.observe(viewLifecycleOwner) { isError ->
